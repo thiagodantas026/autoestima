@@ -1,5 +1,6 @@
 import Autoestima from "@/components/autoestima/Autoestima";
-import { brand, categories, links, spaces } from "@/components/autoestima/data";
+import { brand, categories, hours, links, spaces } from "@/components/autoestima/data";
+import { siteUrl } from "@/lib/site";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -8,7 +9,15 @@ const jsonLd = {
   slogan: brand.slogan,
   url: links.site,
   foundingDate: String(brand.since),
+  telephone: `+351${links.phone.replace(/\s/g, "")}`,
+  image: new URL("/autoestima/salao/fachada.webp", siteUrl).href,
   sameAs: [links.instagram],
+  openingHoursSpecification: hours.map((h) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: h.schema,
+    opens: h.opens,
+    closes: h.closes,
+  })),
   department: spaces.map((s) => ({
     "@type": "BeautySalon",
     name: `${brand.name} ${s.city}`,

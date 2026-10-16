@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { spaces, team, teamSkills, totalServices } from "./data";
+import { salon, spaces, team, teamSkills, totalServices } from "./data";
 import Frame from "./Frame";
 import { initials } from "./lib";
 import { SectionHead } from "./Story";
@@ -38,6 +38,22 @@ export default function Team() {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="ae-team__photos">
+          <figure className="ae-team__photo ae-team__photo--wide" data-reveal>
+            <img src={salon.team.src} alt={salon.team.alt} width={salon.team.w} height={salon.team.h} loading="lazy" />
+            <figcaption>A equipa, no salão</figcaption>
+          </figure>
+          <figure className="ae-team__photo" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+            <img
+              src={salon.teamTools.src}
+              alt={salon.teamTools.alt}
+              width={salon.teamTools.w}
+              height={salon.teamTools.h}
+              loading="lazy"
+            />
+          </figure>
         </div>
 
         <ul className="ae-team__grid">

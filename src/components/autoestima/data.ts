@@ -24,11 +24,13 @@ export const links = {
   instagramHandle: "@autoestimacosmo",
   instagramDm: "https://ig.me/m/autoestimacosmo",
   site: "https://www.autoestima.store/",
-  /* Link da página do salão no Treatwell. Vazio = as marcações vão para o Instagram. */
+  /* Link da página do salão no Treatwell. Vazio = as marcações vão para o WhatsApp. */
   treatwell: "",
   /* Só dígitos com indicativo, ex.: "351912345678". Vazio = sem botão de WhatsApp. */
-  whatsapp: "",
-  phone: "",
+  whatsapp: "351939211910",
+  whatsappLabel: "939 211 910",
+  /* Telefone fixo, como aparece no letreiro */
+  phone: "214 026 548",
   email: "",
 };
 
@@ -43,8 +45,54 @@ export const legal = {
   updated: "16 de outubro de 2026",
 };
 
-export const bookingHref = links.treatwell || links.instagramDm;
-export const bookingLabel = links.treatwell ? "Marcar no Treatwell" : "Marcar visita";
+/* Horário que está no painel da porta do salão */
+export const hours = [
+  {
+    days: "Segunda a sábado",
+    short: "Seg a sáb",
+    label: "10h às 19h",
+    opens: "10:00",
+    closes: "19:00",
+    schema: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  },
+  { days: "Domingo", short: "Dom", label: "11h às 15h", opens: "11:00", closes: "15:00", schema: ["Sunday"] },
+];
+
+export const phoneHref = `tel:+351${links.phone.replace(/\s/g, "")}`;
+
+export const whatsappHref = (text = "Olá! Gostava de marcar uma visita na Autoestima.") =>
+  `https://wa.me/${links.whatsapp}?text=${encodeURIComponent(text)}`;
+
+/* Marcações: Treatwell se houver link, senão WhatsApp, senão Instagram.
+   `where` junta o espaço à mensagem, ex.: "em Odivelas". */
+export const bookingFor = (where = "") =>
+  links.treatwell ||
+  (links.whatsapp
+    ? whatsappHref(`Olá! Gostava de marcar uma visita na Autoestima${where ? ` ${where}` : ""}.`)
+    : links.instagramDm);
+export const bookingHref = bookingFor();
+export const bookingLabel = links.treatwell
+  ? "Marcar no Treatwell"
+  : links.whatsapp
+    ? "Marcar pelo WhatsApp"
+    : "Marcar visita";
+
+/* Fotos reais do salão enviadas pela cliente */
+export const salon = {
+  team: { src: "/autoestima/salao/equipa-salao.webp", w: 1400, h: 933, alt: "A equipa da Autoestima no salão" },
+  teamTools: {
+    src: "/autoestima/salao/equipa.webp",
+    w: 1200,
+    h: 1200,
+    alt: "A equipa da Autoestima com pentes e secadores, em frente ao logótipo do salão",
+  },
+  facade: {
+    src: "/autoestima/salao/fachada.webp",
+    w: 1400,
+    h: 788,
+    alt: "Fachada da Autoestima, com o letreiro lilás: cabeleireiro unissexo e estética",
+  },
+};
 
 export type Space = {
   id: string;
@@ -330,7 +378,15 @@ export const beforeAfter = {
 export const faqs = [
   {
     q: "Como faço a marcação?",
-    a: "Pode marcar online pelo Treatwell, a qualquer hora, ou enviar-nos mensagem no Instagram. Diga-nos que serviços quer fazer e encontramos o melhor horário.",
+    a: "Envie-nos mensagem pelo WhatsApp para o 939 211 910, ligue para o 214 026 548 ou fale connosco no Instagram. Diga-nos que serviços quer fazer e encontramos o melhor horário.",
+  },
+  {
+    q: "Qual é o horário?",
+    a: "De segunda a sábado, das 10h às 19h, e ao domingo, das 11h às 15h.",
+  },
+  {
+    q: "Também atendem homens?",
+    a: "Sim. Somos cabeleireiro unissexo e estética: toda a gente é bem-vinda.",
   },
   {
     q: "Posso fazer vários serviços ao mesmo tempo?",

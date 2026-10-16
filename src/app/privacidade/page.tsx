@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage from "@/components/autoestima/LegalPage";
-import { brand, legal, links, spaces } from "@/components/autoestima/data";
+import { brand, legal, links, phoneHref, spaces, whatsappHref } from "@/components/autoestima/data";
 import { homePath } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,10 +18,15 @@ function Contact() {
   }
   return (
     <>
-      mensagem no Instagram{" "}
-      <a href={links.instagramDm} target="_blank" rel="noopener noreferrer">
-        {links.instagramHandle}
-      </a>
+      WhatsApp{" "}
+      <a
+        href={whatsappHref("Olá! Tenho um pedido sobre os meus dados pessoais.")}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {links.whatsappLabel}
+      </a>{" "}
+      ou telefone <a href={phoneHref}>{links.phone}</a>
     </>
   );
 }
@@ -57,9 +62,9 @@ export default function Privacidade() {
           do site.
         </li>
         <li>
-          <strong>Contactos e marcações.</strong> Quando fala connosco para marcar ou tirar dúvidas (Instagram,
-          WhatsApp, Treatwell, telefone, email ou presencialmente), tratamos os dados que nos dá: nome, contacto,
-          serviços pretendidos, datas e o conteúdo das mensagens.
+          <strong>Contactos e marcações.</strong> Quando fala connosco para marcar ou tirar dúvidas (WhatsApp, telefone,
+          Instagram{links.treatwell && ", Treatwell"}, email ou presencialmente), tratamos os dados que nos dá: nome,
+          contacto, serviços pretendidos, datas e o conteúdo das mensagens.
         </li>
       </ul>
 
@@ -82,8 +87,9 @@ export default function Privacidade() {
       <h2>4. Com quem partilhamos</h2>
       <ul>
         <li>
-          As plataformas que escolhe para falar connosco (Instagram e WhatsApp, da Meta, e Treatwell) tratam os dados
-          também segundo as suas próprias políticas de privacidade.
+          As plataformas que escolhe para falar connosco (WhatsApp e Instagram, da Meta
+          {links.treatwell && ", e Treatwell"}) tratam os dados também segundo as suas próprias políticas de
+          privacidade.
         </li>
         <li>O prestador que aloja este site, apenas para o pôr a funcionar.</li>
         <li>Autoridades públicas, quando a lei o exigir.</li>
@@ -119,10 +125,10 @@ export default function Privacidade() {
         ).
       </p>
 
-      <h2>7. Fotografias de trabalhos</h2>
+      <h2>7. Fotografias</h2>
       <p>
-        As fotografias publicadas no site mostram trabalhos feitos nos nossos espaços. Se aparece numa delas e não quer
-        que continue publicada, fale connosco e retiramo-la.
+        As fotografias publicadas no site mostram a nossa equipa, os nossos espaços e trabalhos feitos por nós. Se
+        aparece numa delas e não quer que continue publicada, fale connosco e retiramo-la.
       </p>
 
       <h2>8. Cookies</h2>

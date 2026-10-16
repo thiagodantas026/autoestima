@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { brand, links, spaces } from "./data";
+import { brand, hours, links, phoneHref, spaces, whatsappHref } from "./data";
 import { scrollToId } from "./lib";
 import { Wordmark } from "./Nav";
-import { ArrowUpRight, Instagram, MapPin, WhatsApp } from "./Icons";
+import { ArrowUpRight, Instagram, MapPin, Phone, WhatsApp } from "./Icons";
 
 const sections = [
   ["servicos", "Serviços"],
@@ -38,6 +38,13 @@ export default function Footer({ year, home = true }: { year: number; home?: boo
               </li>
             ))}
           </ul>
+          <ul className="ae-foot__hours" aria-label="Horário">
+            {hours.map((h) => (
+              <li key={h.days}>
+                <span>{h.short}</span> {h.label}
+              </li>
+            ))}
+          </ul>
         </div>
         <div>
           <h3>Contactos</h3>
@@ -49,14 +56,16 @@ export default function Footer({ year, home = true }: { year: number; home?: boo
             </li>
             {links.whatsapp && (
               <li>
-                <a href={`https://wa.me/${links.whatsapp}`} target="_blank" rel="noopener noreferrer">
-                  <WhatsApp /> WhatsApp
+                <a href={whatsappHref()} target="_blank" rel="noopener noreferrer">
+                  <WhatsApp /> {links.whatsappLabel}
                 </a>
               </li>
             )}
             {links.phone && (
               <li>
-                <a href={`tel:${links.phone.replace(/\s/g, "")}`}>{links.phone}</a>
+                <a href={phoneHref}>
+                  <Phone /> {links.phone}
+                </a>
               </li>
             )}
             {links.email && (

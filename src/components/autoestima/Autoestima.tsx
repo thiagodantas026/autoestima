@@ -12,11 +12,13 @@ import Gallery from "./Gallery";
 import Team, { Numbers } from "./Team";
 import Spaces, { Faq } from "./Spaces";
 import Closing, { StickyBar } from "./Closing";
+import LogoMark from "./LogoMark";
 import { prefersReducedMotion, setLenis } from "./lib";
 
 function Intro() {
   return (
     <div className="ae-intro" aria-hidden="true">
+      <LogoMark className="ae-intro__mark" />
       <p className="ae-intro__word">
         {"Autoestima".split("").map((c, i) => (
           <span key={i} style={{ "--i": i } as React.CSSProperties}>
@@ -25,7 +27,7 @@ function Intro() {
         ))}
       </p>
       <span className="ae-intro__line" />
-      <p className="ae-intro__tag">Hair & Body · Beauty & Cosmetics</p>
+      <p className="ae-intro__tag">Hair & Body</p>
     </div>
   );
 }

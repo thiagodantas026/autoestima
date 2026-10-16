@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef } from "react";
 import { bookingHref, bookingLabel, brand, spaces, team, totalServices } from "./data";
 import { scrollToId, useScrollVar } from "./lib";
+import LogoMark from "./LogoMark";
 import { ArrowUpRight, Sparkle } from "./Icons";
 
 export function Seal({ className = "" }: { className?: string }) {
@@ -127,9 +128,7 @@ export default function Hero() {
               ) : (
                 <>
                   <div className="ae-arch__silk" aria-hidden="true" />
-                  <span className="ae-arch__mono" aria-hidden="true">
-                    A
-                  </span>
+                  <LogoMark className="ae-arch__mono" />
                 </>
               )}
               <span className="ae-arch__sheen" aria-hidden="true" />

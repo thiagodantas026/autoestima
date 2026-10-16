@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { bookingHref, bookingLabel, links } from "./data";
+import { bookingHref, bookingLabel, hours, links, phoneHref } from "./data";
 import { Seal } from "./Hero";
 import Footer from "./Footer";
-import { ArrowUpRight, Instagram, WhatsApp } from "./Icons";
+import { ArrowUpRight, Instagram, Phone, WhatsApp } from "./Icons";
 
 export default function Closing({ year }: { year: number }) {
   return (
@@ -26,18 +26,16 @@ export default function Closing({ year }: { year: number }) {
         <p className="ae-close__lead" data-reveal>
           Marque a sua visita e deixe o resto connosco. Do primeiro olá ao último retoque, o tempo é todo seu.
         </p>
+        <p className="ae-close__hours" data-reveal>
+          {hours.map((h) => `${h.days}, ${h.label}`).join(" · ")}
+        </p>
         <div className="ae-close__btns" data-reveal>
           <a className="ae-btn ae-btn--lilac" href={bookingHref} target="_blank" rel="noopener noreferrer">
-            {bookingLabel} <ArrowUpRight />
+            {links.whatsapp && !links.treatwell && <WhatsApp />} {bookingLabel} <ArrowUpRight />
           </a>
-          {links.whatsapp ? (
-            <a
-              className="ae-btn ae-btn--line"
-              href={`https://wa.me/${links.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <WhatsApp /> WhatsApp
+          {links.phone ? (
+            <a className="ae-btn ae-btn--line" href={phoneHref}>
+              <Phone /> {links.phone}
             </a>
           ) : (
             <a className="ae-btn ae-btn--line" href={links.instagram} target="_blank" rel="noopener noreferrer">
@@ -86,16 +84,22 @@ export function StickyBar() {
       >
         {bookingLabel} <ArrowUpRight />
       </a>
-      <a
-        className="ae-sticky__ig"
-        href={links.whatsapp ? `https://wa.me/${links.whatsapp}` : links.instagram}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={links.whatsapp ? "WhatsApp" : "Instagram"}
-        tabIndex={show ? 0 : -1}
-      >
-        {links.whatsapp ? <WhatsApp /> : <Instagram />}
-      </a>
+      {links.phone ? (
+        <a className="ae-sticky__ig" href={phoneHref} aria-label={`Ligar para ${links.phone}`} tabIndex={show ? 0 : -1}>
+          <Phone />
+        </a>
+      ) : (
+        <a
+          className="ae-sticky__ig"
+          href={links.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          tabIndex={show ? 0 : -1}
+        >
+          <Instagram />
+        </a>
+      )}
     </div>
   );
 }

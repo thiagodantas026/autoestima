@@ -1,7 +1,7 @@
-import { bookingHref, faqs, spaces } from "./data";
+import { bookingFor, faqs, hours, links, phoneHref, salon, spaces } from "./data";
 import Frame from "./Frame";
 import { SectionHead } from "./Story";
-import { ArrowUpRight, MapPin, Plus } from "./Icons";
+import { ArrowUpRight, Clock, MapPin, Phone, Plus } from "./Icons";
 
 export default function Spaces() {
   return (
@@ -17,6 +17,31 @@ export default function Spaces() {
           }
           lead="Escolha o mais perto de si. Nos dois, o mesmo cuidado do primeiro ao último minuto."
         />
+        <figure className="ae-facade" data-reveal>
+          <img
+            src={salon.facade.src}
+            alt={salon.facade.alt}
+            width={salon.facade.w}
+            height={salon.facade.h}
+            loading="lazy"
+          />
+          <figcaption className="ae-facade__card">
+            <p className="ae-facade__kicker">
+              <Clock /> Horário
+            </p>
+            <dl>
+              {hours.map((h) => (
+                <div key={h.days}>
+                  <dt>{h.days}</dt>
+                  <dd>{h.label}</dd>
+                </div>
+              ))}
+            </dl>
+            <a className="ae-facade__phone" href={phoneHref}>
+              <Phone /> {links.phone}
+            </a>
+          </figcaption>
+        </figure>
         <div className="ae-spaces__grid">
           {spaces.map((s, i) => (
             <article key={s.id} className="ae-space" data-reveal style={{ "--i": i } as React.CSSProperties}>
@@ -41,7 +66,7 @@ export default function Spaces() {
                 <div className="ae-space__ctas">
                   <a
                     className="ae-btn ae-btn--ink ae-btn--sm"
-                    href={bookingHref}
+                    href={bookingFor(s.inCity)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

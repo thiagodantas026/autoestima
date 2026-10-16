@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { bookingHref, bookingLabel, brand, links } from "./data";
 import { lockScroll, scrollToId } from "./lib";
+import LogoMark from "./LogoMark";
 import { ArrowUpRight, Instagram } from "./Icons";
 
 const items = [
@@ -19,8 +20,11 @@ export function Wordmark({ light = false }: { light?: boolean }) {
   }
   return (
     <span className={`ae-wordmark${light ? " ae-wordmark--light" : ""}`}>
-      <em>Autoestima</em>
-      <small>Hair & Body · Beauty & Cosmetics</small>
+      <LogoMark className="ae-wordmark__mark" />
+      <span className="ae-wordmark__text">
+        <b>Autoestima</b>
+        <small>Hair & Body</small>
+      </span>
     </span>
   );
 }
