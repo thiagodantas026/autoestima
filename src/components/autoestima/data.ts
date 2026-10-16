@@ -32,6 +32,17 @@ export const links = {
   email: "",
 };
 
+/* Identificação legal do responsável pelo tratamento de dados (RGPD).
+   Preencher com os dados da empresa da cliente: o que ficar vazio não aparece
+   nas páginas de privacidade. O email é o contacto para pedidos de dados. */
+export const legal = {
+  name: "",
+  nif: "",
+  address: "",
+  email: "",
+  updated: "16 de outubro de 2026",
+};
+
 export const bookingHref = links.treatwell || links.instagramDm;
 export const bookingLabel = links.treatwell ? "Marcar no Treatwell" : "Marcar visita";
 

@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { brand } from "@/components/autoestima/data";
+import { homePath, siteUrl } from "@/lib/site";
 import "./globals.css";
+import "@/components/autoestima/autoestima.css";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
@@ -18,17 +20,7 @@ const sans = Manrope({
   variable: "--ae-sans",
 });
 
-/* Domínio onde a página fica publicada, para os links partilhados (WhatsApp,
-   Instagram) mostrarem a imagem e o título certos: GitHub Pages com
-   GITHUB_PAGES=1, senão o domínio de produção que a Vercel passa ao build. */
-const pages = process.env.GITHUB_PAGES === "1";
-const host = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-const siteUrl = pages
-  ? "https://thiagodantas026.github.io"
-  : host
-    ? `https://${host}`
-    : "https://autoestima.vercel.app";
-const pagePath = pages ? "/autoestima/" : "/";
+const pagePath = homePath;
 
 /* Pré-visualização para a cliente aprovar: fora do Google até mudar para false */
 const PREVIEW = true;

@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { bookingHref, bookingLabel, brand, links, spaces } from "./data";
-import { scrollToId } from "./lib";
-import { Wordmark } from "./Nav";
+import { bookingHref, bookingLabel, links } from "./data";
 import { Seal } from "./Hero";
-import { ArrowUpRight, Instagram, MapPin, WhatsApp } from "./Icons";
+import Footer from "./Footer";
+import { ArrowUpRight, Instagram, WhatsApp } from "./Icons";
 
 export default function Closing({ year }: { year: number }) {
   return (
@@ -48,103 +47,7 @@ export default function Closing({ year }: { year: number }) {
         </div>
       </div>
 
-      <footer className="ae-foot">
-        <div className="ae-wrap ae-foot__grid">
-          <div className="ae-foot__brand">
-            <Wordmark light />
-            <p>{brand.slogan}</p>
-          </div>
-          <div>
-            <h3>Espaços</h3>
-            <ul>
-              {spaces.map((s) => (
-                <li key={s.id}>
-                  <a href={s.maps} target="_blank" rel="noopener noreferrer">
-                    <MapPin /> {s.city}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3>Contactos</h3>
-            <ul>
-              <li>
-                <a href={links.instagram} target="_blank" rel="noopener noreferrer">
-                  <Instagram /> Instagram
-                </a>
-              </li>
-              {links.whatsapp && (
-                <li>
-                  <a href={`https://wa.me/${links.whatsapp}`} target="_blank" rel="noopener noreferrer">
-                    <WhatsApp /> WhatsApp
-                  </a>
-                </li>
-              )}
-              {links.phone && (
-                <li>
-                  <a href={`tel:${links.phone.replace(/\s/g, "")}`}>{links.phone}</a>
-                </li>
-              )}
-              {links.email && (
-                <li>
-                  <a href={`mailto:${links.email}`}>{links.email}</a>
-                </li>
-              )}
-              {links.treatwell && (
-                <li>
-                  <a href={links.treatwell} target="_blank" rel="noopener noreferrer">
-                    Treatwell
-                  </a>
-                </li>
-              )}
-              <li>
-                <a href={links.site} target="_blank" rel="noopener noreferrer">
-                  autoestima.store
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3>Navegar</h3>
-            <ul>
-              {[
-                ["servicos", "Serviços"],
-                ["experiencia", "Experiência"],
-                ["menu", "Menu completo"],
-                ["equipa", "Equipa"],
-                ["faq", "Perguntas"],
-              ].map(([id, label]) => (
-                <li key={id}>
-                  <a
-                    href={`#${id}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToId(id);
-                    }}
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="ae-wrap ae-foot__bottom">
-          <p>
-            © {year} {brand.fullName}
-          </p>
-          <p>
-            Site por{" "}
-            <a href="https://upmaxpro.pt" target="_blank" rel="noopener">
-              UpMax Pro
-            </a>
-          </p>
-        </div>
-        <p className="ae-foot__giant" aria-hidden="true">
-          Autoestima
-        </p>
-      </footer>
+      <Footer year={year} />
     </section>
   );
 }

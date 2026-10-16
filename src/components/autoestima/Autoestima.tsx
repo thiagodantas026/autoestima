@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
-import "./autoestima.css";
 import Nav from "./Nav";
 import Hero from "./Hero";
 import Story, { Marquee } from "./Story";
