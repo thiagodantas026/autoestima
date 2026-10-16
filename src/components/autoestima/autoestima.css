@@ -3214,7 +3214,6 @@ html.lenis body {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   gap: clamp(14px, 2vw, 24px);
-  margin-bottom: clamp(48px, 6vw, 80px);
 }
 .ae-team__photo {
   position: relative;

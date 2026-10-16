@@ -1,16 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { salon, spaces, team, teamSkills, totalServices } from "./data";
-import Frame from "./Frame";
-import { initials } from "./lib";
+import { useEffect, useRef } from "react";
+import { salon, spaces, team, totalServices } from "./data";
 import { SectionHead } from "./Story";
 
-const hues = [272, 296, 256, 284, 310, 264, 290];
-
 export default function Team() {
-  const [skill, setSkill] = useState("Todas");
-
   return (
     <section className="ae-team" id="equipa">
       <div className="ae-wrap">
@@ -25,19 +19,6 @@ export default function Team() {
             }
             lead="Esteticistas, cabeleireiras, trancistas, manicures e maquilhadoras certificadas, cada uma no que faz melhor."
           />
-          <div className="ae-chips" role="group" aria-label="Filtrar por especialidade" data-reveal>
-            {teamSkills.map((s) => (
-              <button
-                key={s}
-                type="button"
-                className={skill === s ? "is-on" : undefined}
-                aria-pressed={skill === s}
-                onClick={() => setSkill(s)}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="ae-team__photos">
@@ -55,32 +36,6 @@ export default function Team() {
             />
           </figure>
         </div>
-
-        <ul className="ae-team__grid">
-          {team.map((m, i) => {
-            const match = skill === "Todas" || m.skills.includes(skill);
-            return (
-              <li
-                key={m.name}
-                className={`ae-member${match ? "" : " is-dim"}${m.founder ? " is-founder" : ""}`}
-                data-reveal
-                style={{ "--i": i } as React.CSSProperties}
-              >
-                <div className="ae-member__media">
-                  <Frame src={m.photo} alt={m.name} hue={hues[i % hues.length]} mark={initials(m.name)} />
-                  {m.founder && <span className="ae-member__badge">Fundadora</span>}
-                </div>
-                <h3>{m.name}</h3>
-                <p>{m.role}</p>
-                <ul className="ae-member__skills">
-                  {m.skills.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </li>
-            );
-          })}
-        </ul>
       </div>
     </section>
   );
