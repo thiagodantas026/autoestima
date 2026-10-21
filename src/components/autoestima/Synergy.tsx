@@ -179,7 +179,7 @@ export default function Synergy() {
             )}
           </div>
 
-          <button type="button" className="ae-btn ae-btn--lilac ae-syn__cta" onClick={book} disabled={!chosen.length}>
+          <button type="button" className="ae-btn ae-btn--ink ae-syn__cta" onClick={book} disabled={!chosen.length}>
             Quero marcar esta visita <ArrowUpRight />
           </button>
           <p className="ae-syn__note">

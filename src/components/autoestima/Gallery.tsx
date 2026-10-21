@@ -36,10 +36,9 @@ export default function Gallery() {
   }, [open, step]);
 
   return (
-    <section className="ae-gal" id="trabalhos" data-nav-dark>
+    <section className="ae-gal" id="trabalhos">
       <div className="ae-wrap">
         <SectionHead
-          light
           num="05"
           kicker="Trabalhos"
           title={
@@ -53,7 +52,7 @@ export default function Gallery() {
         <div className="ae-gal__feature" data-reveal>
           <BeforeAfter before={beforeAfter.before} after={beforeAfter.after} alt={beforeAfter.alt} />
           <div className="ae-gal__feature-copy">
-            <p className="ae-kicker ae-kicker--light">
+            <p className="ae-kicker">
               <span className="ae-kicker__dot" />
               Antes & depois · Corpo
             </p>
@@ -64,7 +63,7 @@ export default function Gallery() {
               Tratamento corporal feito na Autoestima, numa das nossas clientes. Massagem redutora, drenagem linfática e
               aplicação de enzimas fazem parte dos cuidados de corpo que pode marcar connosco.
             </p>
-            <a className="ae-btn ae-btn--lilac" href={bookingHref} target="_blank" rel="noopener noreferrer">
+            <a className="ae-btn ae-btn--ink" href={bookingHref} target="_blank" rel="noopener noreferrer">
               {bookingLabel} <ArrowUpRight />
             </a>
             <small>Resultado real de uma cliente. Os resultados variam de pessoa para pessoa.</small>

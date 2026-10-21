@@ -10,16 +10,14 @@ export function SectionHead({
   kicker,
   title,
   lead,
-  light = false,
 }: {
   num: string;
   kicker: string;
   title: React.ReactNode;
   lead?: React.ReactNode;
-  light?: boolean;
 }) {
   return (
-    <header className={`ae-head${light ? " ae-head--light" : ""}`}>
+    <header className="ae-head">
       <p className="ae-head__kicker" data-reveal>
         <span>{num}</span>
         <i aria-hidden="true" />
@@ -49,7 +47,7 @@ export function Marquee() {
     </div>
   );
   return (
-    <div className="ae-marquee" data-nav-dark>
+    <div className="ae-marquee">
       <div className="ae-marquee__track">
         {row(false)}
         {row(true)}

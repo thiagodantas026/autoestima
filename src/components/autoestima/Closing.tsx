@@ -8,14 +8,14 @@ import { ArrowUpRight, Instagram, Phone, WhatsApp } from "./Icons";
 
 export default function Closing({ year }: { year: number }) {
   return (
-    <section className="ae-close" id="marcar" data-nav-dark>
+    <section className="ae-close" id="marcar">
       <div className="ae-close__aura" aria-hidden="true">
         <i />
         <i />
       </div>
       <div className="ae-wrap ae-close__cta">
         <Seal className="ae-close__seal" />
-        <p className="ae-kicker ae-kicker--light" data-reveal>
+        <p className="ae-kicker" data-reveal>
           <span className="ae-kicker__dot" />A sua vez
         </p>
         <h2 data-reveal>
@@ -30,7 +30,7 @@ export default function Closing({ year }: { year: number }) {
           {hours.map((h) => `${h.days}, ${h.label}`).join(" · ")}
         </p>
         <div className="ae-close__btns" data-reveal>
-          <a className="ae-btn ae-btn--lilac" href={bookingHref} target="_blank" rel="noopener noreferrer">
+          <a className="ae-btn ae-btn--ink" href={bookingHref} target="_blank" rel="noopener noreferrer">
             {links.whatsapp && !links.treatwell && <WhatsApp />} {bookingLabel} <ArrowUpRight />
           </a>
           {links.phone ? (

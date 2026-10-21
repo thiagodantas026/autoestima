@@ -33,7 +33,7 @@ export default function Signatures() {
   const current = signatures[active];
 
   return (
-    <section className="ae-sig" id="servicos" data-nav-dark>
+    <section className="ae-sig" id="servicos">
       <div className="ae-wrap">
         <div
           className="ae-sig__layout"
@@ -45,7 +45,6 @@ export default function Signatures() {
         >
           <div>
             <SectionHead
-              light
               num="02"
               kicker="Serviços em destaque"
               title={
@@ -106,7 +105,7 @@ export default function Signatures() {
                 <p className="ae-sig__info-cat">{current.category}</p>
                 <h3>{current.name}</h3>
                 <p>{current.text}</p>
-                <a className="ae-btn ae-btn--lilac" href={bookingHref} target="_blank" rel="noopener noreferrer">
+                <a className="ae-btn ae-btn--ink" href={bookingHref} target="_blank" rel="noopener noreferrer">
                   Marcar este serviço <ArrowUpRight />
                 </a>
               </div>

@@ -14,12 +14,12 @@ const items = [
   ["espacos", "Espaços"],
 ] as const;
 
-export function Wordmark({ light = false }: { light?: boolean }) {
+export function Wordmark() {
   if (brand.logo) {
     return <img className="ae-logo" src={brand.logo} alt={brand.fullName} />;
   }
   return (
-    <span className={`ae-wordmark${light ? " ae-wordmark--light" : ""}`}>
+    <span className="ae-wordmark">
       <LogoMark className="ae-wordmark__mark" />
       <span className="ae-wordmark__text">
         <b>Autoestima</b>
@@ -31,21 +31,10 @@ export function Wordmark({ light = false }: { light?: boolean }) {
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [dark, setDark] = useState(false);
   const [open, setOpen] = useState(false);
 
-  /* Por cima das secções escuras (data-nav-dark) a barra passa a versão escura */
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-      const mid = 38;
-      setDark(
-        Array.from(document.querySelectorAll("[data-nav-dark]")).some((el) => {
-          const r = el.getBoundingClientRect();
-          return r.top <= mid && r.bottom >= mid;
-        }),
-      );
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -71,10 +60,10 @@ export default function Nav() {
 
   return (
     <>
-      <header className={`ae-nav${scrolled ? " is-scrolled" : ""}${dark ? " is-dark" : ""}${open ? " is-open" : ""}`}>
+      <header className={`ae-nav${scrolled ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
         <div className="ae-wrap ae-nav__bar">
           <a href="#inicio" className="ae-nav__brand" onClick={go("inicio")} aria-label="Autoestima, voltar ao início">
-            <Wordmark light={open || dark} />
+            <Wordmark />
           </a>
           <nav className="ae-nav__links" aria-label="Secções">
             {items.map(([id, label]) => (
@@ -121,7 +110,7 @@ export default function Nav() {
         </nav>
         <div className="ae-menu__foot">
           <a
-            className="ae-btn ae-btn--lilac"
+            className="ae-btn ae-btn--ink"
             href={bookingHref}
             target="_blank"
             rel="noopener noreferrer"

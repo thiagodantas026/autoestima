@@ -24,7 +24,7 @@ export default function Footer({ year, home = true }: { year: number; home?: boo
     <footer className="ae-foot">
       <div className="ae-wrap ae-foot__grid">
         <div className="ae-foot__brand">
-          <Wordmark light />
+          <Wordmark />
           <p>{brand.slogan}</p>
         </div>
         <div>
