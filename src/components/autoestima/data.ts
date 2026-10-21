@@ -86,12 +86,6 @@ export const salon = {
     h: 1200,
     alt: "A equipa da Autoestima com pentes e secadores, em frente ao logótipo do salão",
   },
-  facade: {
-    src: "/autoestima/salao/fachada.webp",
-    w: 1400,
-    h: 788,
-    alt: "Fachada da Autoestima, com o letreiro lilás: cabeleireiro unissexo e estética",
-  },
 };
 
 export type Space = {
@@ -119,7 +113,7 @@ export const spaces: Space[] = [
     text: "Abriu como loja de cosméticos e cresceu com as profissionais que foram chegando. Hoje é salão completo: cabelo, tranças, unhas e cosmética, no mesmo espaço.",
     focus: ["Cabelo", "Tranças & Afro", "Unhas", "Cosméticos"],
     address: "",
-    photo: "",
+    photo: "/autoestima/salao/odivelas.webp",
     maps: "https://www.google.com/maps/search/?api=1&query=Autoestima+Hair+%26+Body+Odivelas",
   },
   {
@@ -131,7 +125,7 @@ export const spaces: Space[] = [
     text: "O espaço mais recente, pensado para tratamentos de rosto e corpo: limpeza de pele, microagulhamento, massagens, drenagem e micropigmentação.",
     focus: ["Estética facial", "Corpo", "Micropigmentação", "Depilação a laser"],
     address: "",
-    photo: "",
+    photo: "/autoestima/salao/pontinha.webp",
     maps: "https://www.google.com/maps/search/?api=1&query=Autoestima+Hair+%26+Body+Pontinha",
   },
 ];
@@ -253,14 +247,14 @@ export const signatures: Signature[] = [
     category: "Tranças & Afro",
     text: "Permanente afro para cachos definidos que duram, e soltura de cachos para quem quer movimento.",
     hue: 250,
-    photo: "",
+    photo: "/autoestima/trabalhos/cachos-permanentes.webp",
   },
   {
     name: "Escova progressiva",
     category: "Cabelo",
     text: "Fios alinhados, sem frizz e fáceis de pentear, com acabamento natural.",
     hue: 278,
-    photo: "",
+    photo: "/autoestima/trabalhos/escova-progressiva.webp",
   },
   {
     name: "Micropigmentação",
@@ -365,6 +359,14 @@ export const gallery: Shot[] = [
     alt: "Sobrancelhas micropigmentadas em fase de cicatrização",
     label: "Sobrancelhas",
   },
+  {
+    ...t("escova-progressiva"),
+    alt: "Cabelo comprido, liso e brilhante depois da escova progressiva",
+    label: "Escova progressiva",
+    tall: true,
+  },
+  { ...t("corte-feminino"), alt: "Corte feminino curto com reflexos avermelhados", label: "Corte feminino" },
+  { ...t("cachos-permanentes"), alt: "Cachos permanentes definidos, vistos de trás", label: "Cachos permanentes" },
 ];
 
 /* Antes e depois tirado do vídeo da cliente (tratamento corporal), alinhado
