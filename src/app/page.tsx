@@ -1,13 +1,13 @@
 import Autoestima from "@/components/autoestima/Autoestima";
 import { brand, categories, hours, links, spaces } from "@/components/autoestima/data";
-import { siteUrl } from "@/lib/site";
+import { homePath, siteUrl } from "@/lib/site";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
   name: brand.fullName,
   slogan: brand.slogan,
-  url: links.site,
+  url: new URL(homePath, siteUrl).href,
   foundingDate: String(brand.since),
   telephone: `+351${links.phone.replace(/\s/g, "")}`,
   image: new URL("/autoestima/salao/fachada.webp", siteUrl).href,

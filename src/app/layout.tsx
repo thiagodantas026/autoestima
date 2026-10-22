@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { brand } from "@/components/autoestima/data";
-import { homePath, siteUrl } from "@/lib/site";
+import { homePath, hosting, siteUrl } from "@/lib/site";
 import "./globals.css";
 import "@/components/autoestima/autoestima.css";
 
@@ -22,8 +22,9 @@ const sans = Manrope({
 
 const pagePath = homePath;
 
-/* Pré-visualização para a cliente aprovar: fora do Google até mudar para false */
-const PREVIEW = true;
+/* Só o site real (autoestimahairbody.pt) aparece no Google; as
+   pré-visualizações (GitHub Pages, Vercel) ficam de fora para não duplicar */
+const PREVIEW = !hosting;
 
 const title = "Autoestima Hair & Body · Salão de beleza em Odivelas e Pontinha";
 const description =

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:pages": "GITHUB_PAGES=1 next build && cp -r out/autoestima/. out/ && touch out/.nojekyll",
+    "build:hosting": "HOSTING=1 next build && cp hosting/.htaccess out/",
     "start": "next start"
   },
   "dependencies": {
